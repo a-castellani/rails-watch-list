@@ -1,25 +1,20 @@
 <div class="lists-background-img"
   style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://cdn-elle.ladmedia.fr/var/plain_site/storage/images/loisirs/cinema/dossiers/cinema-comment-l-industrie-culturelle-s-adapte-t-elle-au-scenario-catastrophe-du-coronavirus-3864417/93174471-1-fre-FR/Cinema-comment-l-industrie-culturelle-s-adapte-t-elle-au-scenario-catastrophe-du-coronavirus.jpg')">
-  <h1>Lists of movies</h1>
+  <h1>Save any kind of movie</h1>
 </div>
 
-<div class="flex-box">
-  <div class="cards">
-    <% @lists.each do |list|%>
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path list.photo.key %>');">
-          <h3><%= link_to list.name, list_path(list), class: "link-list" %></h3>
-      </div>
-    <% end %>
+<div class="container my-2">
+  <div class="d-flex justify-content-between m-3">
+    <h2>My lists</h2>
+    <%= link_to "Create a movie list", new_list_path, class: "btn btn-success" %>
   </div>
-
-  <div class="form d-flex justify-content-end">
-    <%= simple_form_for(@list) do |f| %>
-    <%= f.input :name %>
-    <%= f.input :photo, as: :file %>
-    <%= f.submit "Add list", class: "btn btn-primary" %>
-    <% end %>
+  <div class="flex-box">
+    <div class="cards">
+      <% @lists.each do |list|%>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path list.photo.key %>');">
+            <h3><%= link_to list.name, list_path(list), class: "link-list" %></h3>
+        </div>
+      <% end %>
+    </div>
   </div>
-
 </div>
-
-<%# <%= link_to "Create a movie list", new_list_path, class: "btn btn-success" %>
