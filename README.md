@@ -1,6 +1,7 @@
 # README
 
-Watch List app:  
+Watch List app challenge at Le Wagon boot camp:  
+
 As a user, I can create a movie list
 As a user, I can see the details of a movie list
 As a user, I can bookmark a movie inside a movie list
@@ -15,12 +16,3 @@ Steps are necessary to get the application up and running.
 
 * Database: postgresql
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
