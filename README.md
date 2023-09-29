@@ -1,17 +1,19 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Watch List app:  
+As a user, I can create a movie list
+As a user, I can see the details of a movie list
+As a user, I can bookmark a movie inside a movie list
+As a user, I can destroy a bookmark
+As a user, I can see all my movie lists
 
-Things you may want to cover:
+Steps are necessary to get the application up and running.
 
-* Ruby version
+* Ruby version 3.1.2
 
-* System dependencies
+* Cloudinary (you'll need free cloudinary token)
 
-* Configuration
-
-* Database creation
+* Database: postgresql
 
 * Database initialization
 
