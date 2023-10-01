@@ -6,14 +6,22 @@
 <div class="container my-2">
   <div class="d-flex justify-content-between m-3">
     <h2>My lists</h2>
-    <%= link_to "Create a movie list", new_list_path, class: "btn btn-success" %>
+    <%= link_to "Create a movie list", new_list_path, id:"btn-index" ,class: "btn btn-primary" %>
   </div>
   <div class="flex-box">
     <div class="cards">
       <% @lists.each do |list|%>
-        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path list.photo.key %>');">
-            <h3><%= link_to list.name, list_path(list), class: "link-list" %></h3>
-        </div>
+        <% if list.photo.attached? %>
+          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path list.photo.key %>');">
+              <%= link_to "x", list_path(list), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "delete" %>
+              <h3><%= link_to list.name, list_path(list), class: "link-list" %></h3>
+          </div>
+        <% else %>
+          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4));">
+              <%= link_to "x", list_path(list), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "delete" %>
+              <h3><%= link_to list.name, list_path(list), class: "link-list" %></h3>
+          </div>
+        <% end %>
       <% end %>
     </div>
   </div>

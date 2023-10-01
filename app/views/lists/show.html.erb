@@ -1,22 +1,29 @@
-<div class="bookmark-background-img"
-  <% if @list.photo.atached? %>
-    style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @list.photo.key, crop: :fill %>')">
-  <% end %>
+<% if @list.photo.attached? %>
+  <div class="bookmark-background-img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @list.photo.key, crop: :fill %>');">
+<% else %>
+  <div class="bookmark-background-img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3));">
+<% end %>
   <h1><%= @list.name %></h1>
 </div>
-<div class="d-flex justify-content-end">
-  <%= link_to "+ movie", new_list_bookmark_path(@list), class: "btn btn-primary"%>
-</div>
 
-<div class="grid">
-  <% @list.bookmarks.each do |bookmark| %>
-    <div class="card-movie">
-      <%= link_to "x", bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "delete" %>
-      <%= image_tag bookmark.movie.poster_url, class: "movie-poster"%>
-      <div class="card-text">
-        <h2> <%= bookmark.movie.title%></h2>
-        <p><%=bookmark.comment.truncate(170)%></p>
+<div class="container">
+<div class="d-flex justify-content-end mt-3">
+  <%= link_to "Add movie", new_list_bookmark_path(@list), class: "btn btn-primary"%>
+</div>
+  <div class="grid">
+    <% @list.bookmarks.each do |bookmark| %>
+      <div class="card-movie">
+        <%= link_to "x", bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "delete" %>
+        <%= image_tag bookmark.movie.poster_url, class: "movie-poster"%>
+        <div class="card-text">
+          <div class="d-flex">
+            <h2> <%= bookmark.movie.title%> -</h2>
+            <h2> ⭐️ <%= bookmark.movie.rating.to_f%></h2>
+          </div>
+          <p><%= bookmark.movie.overview%></p>
+          <p> <strong>"<%=bookmark.comment.truncate(30)%>" </strong></p>
+        </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
